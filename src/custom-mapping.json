@@ -1,0 +1,44 @@
+{
+  "components": {
+    "Button": {
+      "meta": {},
+      "appearances": {
+        "filled": {
+          "mapping": {},
+          "variantGroups": {
+            "status": {
+              "primary": {
+                "backgroundColor": "#3498db",
+                "borderColor": "transparent",
+                "state": {
+                  "active": {
+                    "borderColor": "transparent",
+                    "backgroundColor": "#2980b9"
+                  }
+                }
+              },
+              "success": {
+                "backgroundColor": "#28a745",
+                "borderColor": "transparent",
+                "state": {
+                  "active": {
+                    "borderColor": "transparent",
+                    "backgroundColor": "#218838"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "strict": {
+    "text-font-family": "SourceSansPro-Regular",
+
+    "text-heading-6-font-family": "Viga-Regular",
+    "text-heading-6-font-weight": "800",
+    "text-heading-5-font-family": "Viga-Regular",
+    "text-heading-5-font-weight": "800"
+  }
+}
