@@ -1,6 +1,7 @@
 import React from 'react';
-import {StyleSheet, View, Image, TouchableOpacity} from 'react-native';
+import {StyleSheet, View, TouchableOpacity} from 'react-native';
 import {Text, Icon, Button} from 'react-native-ui-kitten';
+import FastImage from 'react-native-fast-image';
 
 export default (RecommendedItem = ({item, navigate}) => (
   <View style={styles.item}>
@@ -9,7 +10,7 @@ export default (RecommendedItem = ({item, navigate}) => (
       onPress={() =>
         navigate('ListingWebView', {url: item.link, title: item.link})
       }>
-      <Image
+      <FastImage
         style={{
           width: '100%',
           height: 160,
@@ -17,7 +18,11 @@ export default (RecommendedItem = ({item, navigate}) => (
           borderTopLeftRadius: 3,
           backgroundColor: '#DCE6EE',
         }}
-        source={{uri: item.coverImage}}
+        source={{
+          uri: item.coverImage,
+          priority: FastImage.priority.normal,
+        }}
+        resizeMode={FastImage.resizeMode.cover}
       />
       <View style={{padding: 20}}>
         <Text appearance="hint" numberOfLines={1}>

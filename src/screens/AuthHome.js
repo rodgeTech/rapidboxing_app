@@ -1,12 +1,7 @@
 import React from 'react';
-import {
-  ImageBackground,
-  StyleSheet,
-  View,
-  Linking,
-  TouchableOpacity,
-} from 'react-native';
+import {StyleSheet, View, Linking, TouchableOpacity} from 'react-native';
 import {Button, Layout, Text} from 'react-native-ui-kitten';
+import FastImage from 'react-native-fast-image';
 
 import {AUTH_BACKGROUND} from '../images';
 
@@ -18,7 +13,10 @@ export default (AuthHome = ({navigation}) => {
   };
   return (
     <Layout style={styles.container}>
-      <ImageBackground source={AUTH_BACKGROUND} style={styles.backgroundImage}>
+      <FastImage
+        style={styles.backgroundImage}
+        source={AUTH_BACKGROUND}
+        resizeMode={FastImage.resizeMode.cover}>
         <Layout style={styles.content}>
           <Text category="h1" style={{color: '#fff'}}>
             Hi there...
@@ -75,7 +73,7 @@ export default (AuthHome = ({navigation}) => {
             </Text>
           </TouchableOpacity>
         </View>
-      </ImageBackground>
+      </FastImage>
     </Layout>
   );
 });

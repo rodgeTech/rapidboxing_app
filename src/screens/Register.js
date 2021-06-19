@@ -1,8 +1,9 @@
 import React from 'react';
-import {StyleSheet, ImageBackground, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import {Layout, Text} from 'react-native-ui-kitten';
 import InputScrollView from 'react-native-input-scroll-view';
+import FastImage from 'react-native-fast-image';
 
 import api from '../utils/api';
 import Form from './register/Form';
@@ -47,9 +48,7 @@ export default (Register = ({navigation}) => {
     <React.Fragment>
       <InputScrollView showsVerticalScrollIndicator={false}>
         <RenderSpinner />
-        <ImageBackground
-          source={BOX_BACKGROUND}
-          style={styles.headerBackgroundImage}>
+        <FastImage style={styles.headerBackgroundImage} source={BOX_BACKGROUND}>
           <View
             style={{
               flex: 1,
@@ -66,7 +65,7 @@ export default (Register = ({navigation}) => {
               Create your account today
             </Text>
           </View>
-        </ImageBackground>
+        </FastImage>
         <Layout style={styles.container}>
           <Form onRegister={onRegister} />
           <Text appearance="hint" category="s1">

@@ -2,14 +2,7 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
-import {
-  Icon,
-  Input,
-  Button,
-  Select,
-  Text,
-  CheckBox,
-} from 'react-native-ui-kitten';
+import {Input, Button, Select, Text, CheckBox} from 'react-native-ui-kitten';
 
 const validationSchema = Yup.object().shape({
   link: Yup.string().required("Link can't be empty"),
