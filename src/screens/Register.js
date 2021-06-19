@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, ImageBackground, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import {Layout, Text} from 'react-native-ui-kitten';
 import InputScrollView from 'react-native-input-scroll-view';
