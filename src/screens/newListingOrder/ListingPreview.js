@@ -1,5 +1,6 @@
 import React from 'react';
-import {StyleSheet, View, ImageBackground} from 'react-native';
+import {StyleSheet, View} from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 export default (NewOrder = ({listing}) => {
   if (!listing) return null;
@@ -7,10 +8,13 @@ export default (NewOrder = ({listing}) => {
   return (
     <React.Fragment>
       <View style={styles.previewContainer}>
-        <ImageBackground
+        <FastImage
           style={styles.previewImage}
-          source={{uri: listing.coverImage}}
-          resizeMode="cover"
+          source={{
+            uri: listing.coverImage,
+            priority: FastImage.priority.normal,
+          }}
+          resizeMode={FastImage.resizeMode.cover}
         />
       </View>
     </React.Fragment>
