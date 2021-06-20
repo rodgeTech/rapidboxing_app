@@ -18,6 +18,7 @@
     "json-api-normalizer": "^0.4.16",
     "react": "16.8.1",
     "react-native": "0.61.3",
+    "react-native-camera": "^3.44.1",
     "react-native-fast-image": "^8.3.4",
     "react-native-geocoding": "^0.4.0",
     "react-native-geolocation-service": "^5.0.0",

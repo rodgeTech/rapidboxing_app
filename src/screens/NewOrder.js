@@ -100,7 +100,7 @@ const NewOrder = ({navigation}) => {
 };
 
 NewOrder.navigationOptions = screenProps => ({
-  title: 'Add To Cart',
+  title: 'New Order',
 });
 
 export default NewOrder;
