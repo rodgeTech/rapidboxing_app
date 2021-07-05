@@ -1,9 +1,14 @@
 import React, {useEffect, useContext} from 'react';
-import {StyleSheet, ActivityIndicator} from 'react-native';
+import {
+  StyleSheet,
+  ActivityIndicator,
+  View,
+  TouchableOpacity,
+} from 'react-native';
 import {StackActions} from 'react-navigation';
 import normalize from 'json-api-normalizer';
 import build from 'redux-object';
-import {Layout} from 'react-native-ui-kitten';
+import {Layout, Icon} from 'react-native-ui-kitten';
 import InputScrollView from 'react-native-input-scroll-view';
 
 import {ShippingRateContext} from '../contexts/ShippingRateContext';
@@ -90,11 +95,21 @@ const NewOrder = ({navigation}) => {
   return (
     <React.Fragment>
       <RenderSpinner />
-      <Layout style={styles.container}>
-        <InputScrollView showsVerticalScrollIndicator={false}>
+      <InputScrollView showsVerticalScrollIndicator={false}>
+        <TouchableOpacity
+          style={{
+            height: 200,
+            backgroundColor: '#f7f7f7',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <Icon name="image-outline" fill="#C5CEE0" width={55} height={55} />
+        </TouchableOpacity>
+        <Layout style={styles.container}>
           <Form rates={selectRatesData} createLineItem={createLineItem} />
-        </InputScrollView>
-      </Layout>
+        </Layout>
+      </InputScrollView>
     </React.Fragment>
   );
 };
