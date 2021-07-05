@@ -24,7 +24,7 @@ export default createStackNavigator({
         <TouchableOpacity onPress={() => navigation.navigate('CameraOrder')}>
           <Icon
             name="camera-outline"
-            fill="#C5CEE0"
+            fill="#FFF"
             width={35}
             height={35}
             style={{marginRight: 20}}
@@ -44,6 +44,7 @@ export default createStackNavigator({
         elevation: 0,
       },
       headerTintColor: '#FFF',
+      headerLeft: null,
     },
   },
 });

@@ -10,6 +10,7 @@ import normalize from 'json-api-normalizer';
 import build from 'redux-object';
 import {Layout, Icon} from 'react-native-ui-kitten';
 import InputScrollView from 'react-native-input-scroll-view';
+import FastImage from 'react-native-fast-image';
 
 import {ShippingRateContext} from '../contexts/ShippingRateContext';
 import {useSpinner} from '../hooks/useSpinner';
@@ -104,7 +105,15 @@ const NewOrder = ({navigation}) => {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <Icon name="image-outline" fill="#C5CEE0" width={55} height={55} />
+          {/* <Icon name="image-outline" fill="#C5CEE0" width={55} height={55} /> */}
+          <FastImage
+            style={styles.imagePreivew}
+            source={{
+              uri:
+                'https://images.unsplash.com/photo-1621259182978-fbf93132d53d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2978&q=80',
+              priority: FastImage.priority.normal,
+            }}
+          />
         </TouchableOpacity>
         <Layout style={styles.container}>
           <Form rates={selectRatesData} createLineItem={createLineItem} />
@@ -127,6 +136,12 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
   },
   select: {
+    width: '100%',
+  },
+  imagePreivew: {
+    flex: 1,
+    resizeMode: 'cover',
+    height: '100%',
     width: '100%',
   },
 });
