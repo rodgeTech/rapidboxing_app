@@ -10,8 +10,6 @@ const MAX = 3;
 const CameraRollSelect = ({navigation}) => {
   const [orderState, dispatch] = useContext(OrderContext);
 
-  console.log('MY STATAE ', orderState.images);
-
   const [selectedImages, setSelectedImages] = useState([]);
   const [num, setNum] = useState(0);
 
@@ -20,9 +18,6 @@ const CameraRollSelect = ({navigation}) => {
 
     setSelectedImages(images);
     setNum(num);
-
-    // console.log(current);
-    // console.log(selectedImages);
 
     dispatch({
       type: 'SET_IMAGES',

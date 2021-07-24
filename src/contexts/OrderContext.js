@@ -15,6 +15,14 @@ const reducer = (state, action) => {
         images,
       };
     }
+    case 'REMOVE_IMAGE': {
+      const {image} = action;
+      const images = state.images.filter(orderImage => orderImage != image);
+      return {
+        ...state,
+        images,
+      };
+    }
     default:
       return state;
   }

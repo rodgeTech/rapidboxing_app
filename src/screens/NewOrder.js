@@ -1,14 +1,19 @@
 import React, {useEffect, useContext, useState} from 'react';
-import {StyleSheet, ActivityIndicator, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  ActivityIndicator,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {StackActions} from 'react-navigation';
 import normalize from 'json-api-normalizer';
 import build from 'redux-object';
 import {Layout, Icon} from 'react-native-ui-kitten';
 import InputScrollView from 'react-native-input-scroll-view';
-import FastImage from 'react-native-fast-image';
 
 import {ShippingRateContext} from '../contexts/ShippingRateContext';
 import {useSpinner} from '../hooks/useSpinner';
+import Images from './newOrder/Images';
 
 import api from '../utils/api';
 import Form from './newOrder/Form';
@@ -100,14 +105,14 @@ const NewOrder = ({navigation}) => {
       <RenderSpinner />
       <InputScrollView showsVerticalScrollIndicator={false}>
         {orderImages.length ? (
-          <FastImage
-            style={styles.imagePreivew}
-            source={{
-              uri:
-                'https://hk-media.apjonlinecdn.com/catalog/product/cache/b3b166914d87ce343d4dc5ec5117b502/c/0/c06539619_1_1.png',
-              priority: FastImage.priority.normal,
-            }}
-          />
+          <View
+            style={{
+              backgroundColor: '#F2F6FF',
+              paddingTop: 15,
+              paddingBottom: 15,
+            }}>
+            <Images images={orderImages} />
+          </View>
         ) : (
           <TouchableOpacity
             onPress={() => navigation.navigate('CameraRollSelect')}
