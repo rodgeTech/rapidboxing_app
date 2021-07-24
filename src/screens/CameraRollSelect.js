@@ -24,13 +24,12 @@ const CameraRollSelect = () => {
         </Text>
       </View>
       <CameraRollPicker
-        groupTypes="SavedPhotos"
+        groupTypes="All"
         maximum={3}
         selected={selectedImages}
-        assetType="Photos"
         imagesPerRow={3}
-        imageMargin={5}
         callback={getSelectedImages}
+        style={{flex: 1}}
       />
     </View>
   );

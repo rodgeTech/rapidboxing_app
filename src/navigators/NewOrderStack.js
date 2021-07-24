@@ -51,15 +51,9 @@ export default createStackNavigator({
   CameraRollSelect: {
     screen: CameraRollSelect,
     navigationOptions: {
-      headerTransparent: true,
-      headerTitleStyle: {
-        color: '#FFF',
-      },
       headerStyle: {
         elevation: 0,
       },
-      headerTintColor: '#FFF',
-      headerLeft: null,
     },
   },
 });
