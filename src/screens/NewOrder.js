@@ -1,10 +1,5 @@
 import React, {useEffect, useContext, useState} from 'react';
-import {
-  StyleSheet,
-  ActivityIndicator,
-  View,
-  TouchableOpacity,
-} from 'react-native';
+import {StyleSheet, ActivityIndicator, TouchableOpacity} from 'react-native';
 import {StackActions} from 'react-navigation';
 import normalize from 'json-api-normalizer';
 import build from 'redux-object';
