@@ -1,4 +1,4 @@
-import React, {useEffect, useContext} from 'react';
+import React, {useEffect, useContext, useState} from 'react';
 import {
   StyleSheet,
   ActivityIndicator,
@@ -19,6 +19,8 @@ import api from '../utils/api';
 import Form from './newOrder/Form';
 
 const NewOrder = ({navigation}) => {
+  const [images, setImages] = useState([]);
+
   const [shippingRateState, shippingRateDispatch] = useContext(
     ShippingRateContext,
   );
@@ -97,15 +99,7 @@ const NewOrder = ({navigation}) => {
     <React.Fragment>
       <RenderSpinner />
       <InputScrollView showsVerticalScrollIndicator={false}>
-        <TouchableOpacity
-          style={{
-            height: 200,
-            backgroundColor: '#f7f7f7',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          {/* <Icon name="image-outline" fill="#C5CEE0" width={55} height={55} /> */}
+        {images.length ? (
           <FastImage
             style={styles.imagePreivew}
             source={{
@@ -114,7 +108,20 @@ const NewOrder = ({navigation}) => {
               priority: FastImage.priority.normal,
             }}
           />
-        </TouchableOpacity>
+        ) : (
+          <TouchableOpacity
+            onPress={() => navigation.navigate('CameraRollSelect')}
+            style={{
+              height: 200,
+              backgroundColor: '#f7f7f7',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <Icon name="image-outline" fill="#C5CEE0" width={55} height={55} />
+          </TouchableOpacity>
+        )}
+
         <Layout style={styles.container}>
           <Form rates={selectRatesData} createLineItem={createLineItem} />
         </Layout>

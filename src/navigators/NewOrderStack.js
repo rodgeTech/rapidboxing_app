@@ -6,6 +6,7 @@ import {Header, HeaderBackButton} from 'react-navigation-stack';
 
 import NewOrder from '../screens/NewOrder';
 import CameraOrder from '../screens/CameraOrder';
+import CameraRollSelect from '../screens/CameraRollSelect';
 
 export default createStackNavigator({
   NewOrderScreen: {
@@ -35,6 +36,20 @@ export default createStackNavigator({
   },
   CameraOrder: {
     screen: CameraOrder,
+    navigationOptions: {
+      headerTransparent: true,
+      headerTitleStyle: {
+        color: '#FFF',
+      },
+      headerStyle: {
+        elevation: 0,
+      },
+      headerTintColor: '#FFF',
+      headerLeft: null,
+    },
+  },
+  CameraRollSelect: {
+    screen: CameraRollSelect,
     navigationOptions: {
       headerTransparent: true,
       headerTitleStyle: {
