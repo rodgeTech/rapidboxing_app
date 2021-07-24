@@ -1,24 +1,22 @@
-import React, { createContext, useReducer } from 'react';
+import React, {createContext, useReducer} from 'react';
 
 export const ListingContext = createContext({});
 
 const initialState = {
   fetchingListing: true,
   listing: {},
-}
+};
 
 const reducer = (state, action) => {
   switch (action.type) {
     case 'GET_LISTING': {
       return {
         ...state,
-        fetchingListing: true
+        fetchingListing: true,
       };
     }
     case 'GET_LISTING_SUCCESS': {
-      const {
-        listing,
-      } = action;
+      const {listing} = action;
       return {
         ...state,
         listing,
@@ -28,10 +26,10 @@ const reducer = (state, action) => {
     case 'GET_LISTING_FAILURE':
       return {
         ...state,
-        fetchingListing: false
+        fetchingListing: false,
       };
     case 'NO_LISTING': {
-      return { ...state, listing: {}, fetchingListing: false };
+      return {...state, listing: {}, fetchingListing: false};
     }
     default:
       return state;
@@ -45,4 +43,4 @@ export const ListingProvider = props => {
       {props.children}
     </ListingContext.Provider>
   );
-}
+};

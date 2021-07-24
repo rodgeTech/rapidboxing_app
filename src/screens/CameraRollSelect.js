@@ -1,8 +1,11 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import CameraRollPicker from 'react-native-camera-roll-picker';
+import {Icon} from 'react-native-ui-kitten';
 
-const CameraRollSelect = () => {
+const MAX = 3;
+
+const CameraRollSelect = ({navigation}) => {
   const [selectedImages, setSelectedImages] = useState([]);
   const [num, setNum] = useState(0);
 
@@ -19,13 +22,14 @@ const CameraRollSelect = () => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <Text style={styles.text}>
-          <Text style={styles.bold}> {num} </Text> images has been selected
+        <Text style={styles.bold}>
+          {' '}
+          {num}/{MAX} selected
         </Text>
       </View>
       <CameraRollPicker
         groupTypes="All"
-        maximum={3}
+        maximum={MAX}
         selected={selectedImages}
         imagesPerRow={3}
         callback={getSelectedImages}
@@ -35,30 +39,40 @@ const CameraRollSelect = () => {
   );
 };
 
+CameraRollSelect.navigationOptions = ({navigation}) => {
+  return {
+    headerRight: () => (
+      <TouchableOpacity onPress={() => navigation.navigate('NewOrderScreen')}>
+        <Icon
+          name="checkmark-outline"
+          fill="#fff"
+          width={35}
+          height={35}
+          style={{marginRight: 20}}
+        />
+      </TouchableOpacity>
+    ),
+  };
+};
+
 export default CameraRollSelect;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F6AE2D',
+    backgroundColor: '#0079BF',
   },
   content: {
-    marginTop: 15,
     height: 50,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    flexWrap: 'wrap',
   },
-  text: {
+  text: {},
+  bold: {
+    fontWeight: 'bold',
     fontSize: 16,
     alignItems: 'center',
     color: '#fff',
-  },
-  bold: {
-    fontWeight: 'bold',
-  },
-  info: {
-    fontSize: 12,
   },
 });

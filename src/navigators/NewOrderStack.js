@@ -2,7 +2,6 @@ import React from 'react';
 import {Icon} from 'react-native-ui-kitten';
 import {TouchableOpacity} from 'react-native';
 import {createStackNavigator} from 'react-navigation-stack';
-import {Header, HeaderBackButton} from 'react-navigation-stack';
 
 import NewOrder from '../screens/NewOrder';
 import CameraOrder from '../screens/CameraOrder';
@@ -52,8 +51,10 @@ export default createStackNavigator({
     screen: CameraRollSelect,
     navigationOptions: {
       headerStyle: {
+        backgroundColor: '#0079BF',
         elevation: 0,
       },
+      headerTintColor: '#fff',
     },
   },
 });
