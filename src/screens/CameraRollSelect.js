@@ -1,11 +1,17 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import CameraRollPicker from 'react-native-camera-roll-picker';
 import {Icon} from 'react-native-ui-kitten';
 
+import {OrderContext} from '../contexts/OrderContext';
+
 const MAX = 3;
 
 const CameraRollSelect = ({navigation}) => {
+  const [orderState, dispatch] = useContext(OrderContext);
+
+  console.log('MY STATAE ', orderState.images);
+
   const [selectedImages, setSelectedImages] = useState([]);
   const [num, setNum] = useState(0);
 
@@ -15,8 +21,13 @@ const CameraRollSelect = ({navigation}) => {
     setSelectedImages(images);
     setNum(num);
 
-    console.log(current);
-    console.log(selectedImages);
+    // console.log(current);
+    // console.log(selectedImages);
+
+    dispatch({
+      type: 'SET_IMAGES',
+      images,
+    });
   };
 
   return (

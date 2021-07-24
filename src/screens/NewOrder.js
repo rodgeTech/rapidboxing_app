@@ -12,9 +12,14 @@ import {useSpinner} from '../hooks/useSpinner';
 
 import api from '../utils/api';
 import Form from './newOrder/Form';
+import {OrderContext} from '../contexts/OrderContext';
 
 const NewOrder = ({navigation}) => {
-  const [images, setImages] = useState([]);
+  const [orderState, orderDispatch] = useContext(OrderContext);
+
+  const orderImages = orderState.images;
+
+  console.log('NEW ORDER STATE ', orderImages);
 
   const [shippingRateState, shippingRateDispatch] = useContext(
     ShippingRateContext,
@@ -94,12 +99,12 @@ const NewOrder = ({navigation}) => {
     <React.Fragment>
       <RenderSpinner />
       <InputScrollView showsVerticalScrollIndicator={false}>
-        {images.length ? (
+        {orderImages.length ? (
           <FastImage
             style={styles.imagePreivew}
             source={{
               uri:
-                'https://images.unsplash.com/photo-1621259182978-fbf93132d53d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2978&q=80',
+                'https://hk-media.apjonlinecdn.com/catalog/product/cache/b3b166914d87ce343d4dc5ec5117b502/c/0/c06539619_1_1.png',
               priority: FastImage.priority.normal,
             }}
           />
@@ -141,9 +146,12 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   imagePreivew: {
-    flex: 1,
     resizeMode: 'cover',
-    height: '100%',
-    width: '100%',
+
+    height: 300,
+    backgroundColor: '#f7f7f7',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
