@@ -10,6 +10,7 @@ import normalize from 'json-api-normalizer';
 import build from 'redux-object';
 import {Layout, Icon} from 'react-native-ui-kitten';
 import InputScrollView from 'react-native-input-scroll-view';
+import {getType} from 'mime';
 
 import {ShippingRateContext} from '../contexts/ShippingRateContext';
 import {useSpinner} from '../hooks/useSpinner';
@@ -69,8 +70,26 @@ const NewOrder = ({navigation}) => {
       local_pickup: localPickup,
     };
 
+    const formData = new FormData();
+    formData.append('link', link);
+    formData.append('details', details);
+    formData.append('quantity', quantity);
+    formData.append('shipping_rate_id', shippingRate.id);
+    formData.append('extra_pounds', extraPounds);
+    formData.append('local_pickup', localPickup);
+
+    const lineItemImages = orderState.images.map(image => ({
+      uri: `file:///${image.uri}`,
+      name: image.filename,
+      type: getType(image.filename),
+    }));
+
+    console.log('POST IMAE ', lineItemImages);
+
+    formData.append('images[]', lineItemImages);
+
     api
-      .post('/line_items', params)
+      .post('/line_items', formData)
       .then(res => {
         resetForm();
         hideSpinner();

@@ -3,8 +3,8 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 const apiVersion = 'v1';
 
-const apiRoot = `https://rapidboxing.com/api/${apiVersion}`;
-// const apiRoot = `http://192.168.0.13:3000/api/${apiVersion}`;
+// const apiRoot = `https://rapidboxing.com/api/${apiVersion}`;
+const apiRoot = `http://localhost:3000/api/${apiVersion}`;
 
 const instance = axios.create({
   baseURL: apiRoot,
