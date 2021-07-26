@@ -25,8 +25,6 @@ const NewOrder = ({navigation}) => {
 
   const orderImages = orderState.images;
 
-  console.log('NEW ORDER STATE ', orderImages);
-
   const [shippingRateState, shippingRateDispatch] = useContext(
     ShippingRateContext,
   );
@@ -74,19 +72,20 @@ const NewOrder = ({navigation}) => {
     formData.append('link', link);
     formData.append('details', details);
     formData.append('quantity', quantity);
+    formData.append('price', price);
     formData.append('shipping_rate_id', shippingRate.id);
     formData.append('extra_pounds', extraPounds);
     formData.append('local_pickup', localPickup);
 
-    const lineItemImages = orderState.images.map(image => ({
-      uri: `file:///${image.uri}`,
-      name: image.filename,
-      type: getType(image.filename),
-    }));
+    for (const orderImage of orderState.images) {
+      const image = {
+        uri: `${orderImage.uri}`,
+        name: orderImage.filename,
+        type: getType(orderImage.filename),
+      };
 
-    console.log('POST IMAE ', lineItemImages);
-
-    formData.append('images[]', lineItemImages);
+      formData.append('images[]', image);
+    }
 
     api
       .post('/line_items', formData)
