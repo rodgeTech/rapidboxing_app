@@ -35,6 +35,13 @@ export default (CartItem = ({item, removeLineItem, navigate}) => (
           size="tiny">
           Remove
         </Button>
+        <Button
+          onPress={() => navigate('CartItemDetails', {lineItemId: item.id})}
+          status="basic"
+          size="tiny"
+          style={{marginLeft: 8}}>
+          More Details
+        </Button>
       </View>
     </View>
   </View>
