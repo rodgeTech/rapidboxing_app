@@ -61,5 +61,8 @@ export default function CartItemDetails({navigation}) {
   const lineItemData = build(state, 'lineItem', null)[0];
   const imagesData = build(state, 'image', null);
 
+  console.log(lineItemData);
+  console.log(imagesData);
+
   return <Text>Hello</Text>;
 }

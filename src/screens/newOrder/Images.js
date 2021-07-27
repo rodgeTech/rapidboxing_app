@@ -12,6 +12,7 @@ const Images = ({images}) => {
   const [orderState, dispatch] = useContext(OrderContext);
 
   const renderItem = ({item, index}, parallaxProps) => {
+    const imageSrc = 'imageUrl' in item ? item.imageUrl : item.uri;
     return (
       <View style={styles.item}>
         <View
@@ -39,7 +40,7 @@ const Images = ({images}) => {
         </View>
 
         <ParallaxImage
-          source={{uri: item.uri}}
+          source={{uri: imageSrc}}
           containerStyle={styles.imageContainer}
           style={styles.image}
           parallaxFactor={0.4}

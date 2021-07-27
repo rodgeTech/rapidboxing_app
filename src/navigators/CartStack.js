@@ -3,6 +3,7 @@ import {createStackNavigator} from 'react-navigation-stack';
 import Cart from '../screens/Cart';
 import CartItemDetails from '../screens/CartItemDetails';
 import Checkout from '../screens/Checkout';
+import EditLineItem from '../screens/EditLineItem';
 import ListingWebView from '../screens/ListingWebView';
 
 export default createStackNavigator(
@@ -25,6 +26,7 @@ export default createStackNavigator(
     },
     ListingWebView: ListingWebView,
     CartItemDetails: CartItemDetails,
+    EditLineItem: EditLineItem,
   },
   {
     defaultNavigationOptions: {
