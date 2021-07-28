@@ -1,10 +1,5 @@
-import React, {useEffect, useContext, useState} from 'react';
-import {
-  StyleSheet,
-  ActivityIndicator,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import React, {useEffect, useContext} from 'react';
+import {StyleSheet, ActivityIndicator, View} from 'react-native';
 import {StackActions} from 'react-navigation';
 import normalize from 'json-api-normalizer';
 import build from 'redux-object';
@@ -14,16 +9,14 @@ import {getType} from 'mime';
 
 import {ShippingRateContext} from '../contexts/ShippingRateContext';
 import {useSpinner} from '../hooks/useSpinner';
-import Images from './newOrder/Images';
 
 import api from '../utils/api';
 import Form from './newOrder/Form';
 import {OrderContext} from '../contexts/OrderContext';
+import ParallaxCarousel from '../components/ParallaxCarousel';
 
 const NewOrder = ({navigation}) => {
   const [orderState, orderDispatch] = useContext(OrderContext);
-
-  const orderImages = orderState.images;
 
   const [shippingRateState, shippingRateDispatch] = useContext(
     ShippingRateContext,
@@ -58,15 +51,6 @@ const NewOrder = ({navigation}) => {
       extraPounds,
       localPickup,
     } = values;
-    const params = {
-      link,
-      details,
-      quantity,
-      price,
-      shipping_rate_id: shippingRate.id,
-      extra_pounds: extraPounds,
-      local_pickup: localPickup,
-    };
 
     const formData = new FormData();
     formData.append('link', link);
@@ -121,32 +105,24 @@ const NewOrder = ({navigation}) => {
   return (
     <React.Fragment>
       <RenderSpinner />
-      <InputScrollView showsVerticalScrollIndicator={false}>
-        {orderImages.length ? (
+      <InputScrollView showsVerticalScrollIndicator={true}>
+        {orderState.images && (
           <View
             style={{
               backgroundColor: '#F2F6FF',
               paddingTop: 15,
               paddingBottom: 15,
             }}>
-            <Images images={orderImages} />
+            <ParallaxCarousel
+              images={orderState.images}
+              onRemoveImage={image => {
+                orderDispatch({
+                  type: 'REMOVE_IMAGE',
+                  image,
+                });
+              }}
+            />
           </View>
-        ) : (
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate('CameraRollSelect', {
-                returnToScreen: 'NewOrderScreen',
-              })
-            }
-            style={{
-              height: 200,
-              backgroundColor: '#f7f7f7',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <Icon name="image-outline" fill="#C5CEE0" width={55} height={55} />
-          </TouchableOpacity>
         )}
 
         <Layout style={styles.container}>
@@ -156,10 +132,6 @@ const NewOrder = ({navigation}) => {
     </React.Fragment>
   );
 };
-
-NewOrder.navigationOptions = screenProps => ({
-  title: 'New Order',
-});
 
 export default NewOrder;
 

@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useContext} from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import CameraRollPicker from 'react-native-camera-roll-picker';
 import {Icon} from 'react-native-ui-kitten';
@@ -7,21 +7,15 @@ import {OrderContext} from '../contexts/OrderContext';
 
 const MAX = 3;
 
-const CameraRollSelect = () => {
+const NewOrderRollPicker = () => {
   const [orderState, dispatch] = useContext(OrderContext);
 
-  const [selectedImages, setSelectedImages] = useState([]);
-  const [num, setNum] = useState(0);
+  const images = orderState.images;
 
-  const getSelectedImages = (images, current) => {
-    const num = images.length;
-
-    setSelectedImages(images);
-    setNum(num);
-
+  const onSelectImage = (selectedImages, current) => {
     dispatch({
       type: 'SET_IMAGES',
-      images,
+      images: selectedImages,
     });
   };
 
@@ -30,27 +24,25 @@ const CameraRollSelect = () => {
       <View style={styles.content}>
         <Text style={styles.bold}>
           {' '}
-          {num}/{MAX} selected
+          {images.length}/{MAX} selected
         </Text>
       </View>
       <CameraRollPicker
         groupTypes="All"
         maximum={MAX}
-        selected={selectedImages}
+        selected={images}
         imagesPerRow={3}
-        callback={getSelectedImages}
+        callback={onSelectImage}
         style={{flex: 1}}
       />
     </View>
   );
 };
 
-CameraRollSelect.navigationOptions = ({navigation}) => {
-  const returnToScreen = navigation.getParam('returnToScreen', null);
-
+NewOrderRollPicker.navigationOptions = ({navigation}) => {
   return {
     headerRight: () => (
-      <TouchableOpacity onPress={() => navigation.navigate(returnToScreen)}>
+      <TouchableOpacity onPress={() => navigation.navigate('NewOrderScreen')}>
         <Icon
           name="checkmark-outline"
           fill="#fff"
@@ -63,7 +55,7 @@ CameraRollSelect.navigationOptions = ({navigation}) => {
   };
 };
 
-export default CameraRollSelect;
+export default NewOrderRollPicker;
 
 const styles = StyleSheet.create({
   container: {

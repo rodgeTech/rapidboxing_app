@@ -24,8 +24,6 @@ const Calculator = ({navigation}) => {
       .then(({data}) => {
         const shippingRates = normalize(data);
 
-        console.log(shippingRates.weightShippingRate[15])
-
         shippingRateDispatch({
           type: 'GET_SHIPPING_RATES_SUCCESS',
           shippingRates,
@@ -37,15 +35,8 @@ const Calculator = ({navigation}) => {
   }, []);
 
   const calculate = (values, resetForm) => {
-    console.log("MEEE", values)
     showSpinner();
-    const {
-      quantity,
-      shippingRate,
-      price,
-      extraPounds,
-      localPickup,
-    } = values;
+    const {quantity, shippingRate, price, extraPounds, localPickup} = values;
     const params = {
       quantity,
       price,
@@ -59,8 +50,13 @@ const Calculator = ({navigation}) => {
       .then(({data}) => {
         resetForm();
         hideSpinner();
-        console.log("LUS", shippingRateState)
-        const calculatedValues = {...data, shippingRate: shippingRateState.shippingRates.weightShippingRate[params.shipping_rate_id].attributes}
+        const calculatedValues = {
+          ...data,
+          shippingRate:
+            shippingRateState.shippingRates.weightShippingRate[
+              params.shipping_rate_id
+            ].attributes,
+        };
         navigation.navigate('Estimation', {calculatedValues});
       })
       .catch(err => {
@@ -97,7 +93,6 @@ const Calculator = ({navigation}) => {
     </React.Fragment>
   );
 };
-
 
 export default Calculator;
 

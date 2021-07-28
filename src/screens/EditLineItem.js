@@ -1,4 +1,4 @@
-import React, {useEffect, useContext, useState, useReducer} from 'react';
+import React, {useEffect, useContext, useReducer} from 'react';
 import {
   StyleSheet,
   ActivityIndicator,
@@ -13,7 +13,6 @@ import InputScrollView from 'react-native-input-scroll-view';
 import {getType} from 'mime';
 
 import {useSpinner} from '../hooks/useSpinner';
-import Images from './newOrder/Images';
 
 import api from '../utils/api';
 import Form from '../components/LineItem/Form';
@@ -167,7 +166,7 @@ const EditLineItem = ({navigation}) => {
     <React.Fragment>
       <RenderSpinner />
       <InputScrollView showsVerticalScrollIndicator={false}>
-        {orderState.editImages.length ? (
+        {orderState.editImages && (
           <View
             style={{
               backgroundColor: '#F2F6FF',
@@ -179,18 +178,6 @@ const EditLineItem = ({navigation}) => {
               onRemoveImage={onRemoveImage}
             />
           </View>
-        ) : (
-          <TouchableOpacity
-            onPress={() => navigation.navigate('EditLineItemRollPicker')}
-            style={{
-              height: 200,
-              backgroundColor: '#f7f7f7',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <Icon name="image-outline" fill="#C5CEE0" width={55} height={55} />
-          </TouchableOpacity>
         )}
 
         <Layout style={styles.container}>
@@ -203,24 +190,6 @@ const EditLineItem = ({navigation}) => {
       </InputScrollView>
     </React.Fragment>
   );
-};
-
-EditLineItem.navigationOptions = ({navigation}) => {
-  return {
-    title: 'Edit Cart Item',
-    headerRight: () => (
-      <TouchableOpacity
-        onPress={() => navigation.navigate('EditLineItemRollPicker')}>
-        <Icon
-          name="image-outline"
-          fill="#fff"
-          width={35}
-          height={35}
-          style={{marginRight: 20}}
-        />
-      </TouchableOpacity>
-    ),
-  };
 };
 
 export default EditLineItem;
