@@ -133,7 +133,11 @@ const NewOrder = ({navigation}) => {
           </View>
         ) : (
           <TouchableOpacity
-            onPress={() => navigation.navigate('CameraRollSelect')}
+            onPress={() =>
+              navigation.navigate('CameraRollSelect', {
+                returnToScreen: 'NewOrderScreen',
+              })
+            }
             style={{
               height: 200,
               backgroundColor: '#f7f7f7',

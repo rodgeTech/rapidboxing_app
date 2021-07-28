@@ -18,6 +18,7 @@ import Images from './newOrder/Images';
 import api from '../utils/api';
 import Form from '../components/LineItem/Form';
 import {OrderContext} from '../contexts/OrderContext';
+import ParallaxCarousel from '../components/ParallaxCarousel';
 
 const initialState = {
   loading: true,
@@ -69,8 +70,8 @@ const EditLineItem = ({navigation}) => {
       const imagesData = build(normalize(lineItemRes), 'image', null);
 
       orderDispatch({
-        type: 'SET_IMAGES',
-        images: imagesData,
+        type: 'SET_EDIT_IMAGES',
+        editImages: imagesData ? imagesData : [],
       });
 
       const shippingRates = normalize(shippingRatesRes);
@@ -107,14 +108,15 @@ const EditLineItem = ({navigation}) => {
     formData.append('extra_pounds', extraPounds);
     formData.append('local_pickup', localPickup);
 
-    for (const orderImage of orderState.images) {
-      const image = {
-        uri: `${orderImage.uri}`,
-        name: orderImage.filename,
-        type: getType(orderImage.filename),
-      };
-
-      formData.append('images[]', image);
+    for (const orderImage of orderState.editImages) {
+      if (!('imageUrl' in orderImage)) {
+        const image = {
+          uri: `${orderImage.uri}`,
+          name: orderImage.filename,
+          type: getType(orderImage.filename),
+        };
+        formData.append('images[]', image);
+      }
     }
 
     api
@@ -130,15 +132,30 @@ const EditLineItem = ({navigation}) => {
       });
   };
 
+  const onRemoveImage = async image => {
+    if ('id' in image) {
+      try {
+        await api.del(`/images/${image.id}`);
+        orderDispatch({
+          type: 'REMOVE_EDIT_IMAGE',
+          editImage: image,
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      orderDispatch({
+        type: 'REMOVE_EDIT_IMAGE',
+        editImage: image,
+      });
+    }
+  };
+
   if (state.loading)
     return <ActivityIndicator size="large" style={{marginTop: 30}} />;
 
   const lineItemData = build(state, 'lineItem', null)[0];
-
   const shippingRates = build(state.shippingRates, 'weightShippingRate', null);
-
-  console.log('LINE', lineItemData);
-
   const selectRatesData = shippingRates.map(rate => ({
     id: rate.id,
     text: `${rate.name} (${rate.minOrderWeight}lb - ${
@@ -150,18 +167,21 @@ const EditLineItem = ({navigation}) => {
     <React.Fragment>
       <RenderSpinner />
       <InputScrollView showsVerticalScrollIndicator={false}>
-        {orderState.images.length ? (
+        {orderState.editImages.length ? (
           <View
             style={{
               backgroundColor: '#F2F6FF',
               paddingTop: 15,
               paddingBottom: 15,
             }}>
-            <Images images={orderState.images} />
+            <ParallaxCarousel
+              images={orderState.editImages}
+              onRemoveImage={onRemoveImage}
+            />
           </View>
         ) : (
           <TouchableOpacity
-            onPress={() => navigation.navigate('CameraRollSelect')}
+            onPress={() => navigation.navigate('EditLineItemRollPicker')}
             style={{
               height: 200,
               backgroundColor: '#f7f7f7',
@@ -185,9 +205,23 @@ const EditLineItem = ({navigation}) => {
   );
 };
 
-EditLineItem.navigationOptions = screenProps => ({
-  title: 'Edit Cart Item',
-});
+EditLineItem.navigationOptions = ({navigation}) => {
+  return {
+    title: 'Edit Cart Item',
+    headerRight: () => (
+      <TouchableOpacity
+        onPress={() => navigation.navigate('EditLineItemRollPicker')}>
+        <Icon
+          name="image-outline"
+          fill="#fff"
+          width={35}
+          height={35}
+          style={{marginRight: 20}}
+        />
+      </TouchableOpacity>
+    ),
+  };
+};
 
 export default EditLineItem;
 

@@ -4,6 +4,7 @@ import Cart from '../screens/Cart';
 import CartItemDetails from '../screens/CartItemDetails';
 import Checkout from '../screens/Checkout';
 import EditLineItem from '../screens/EditLineItem';
+import EditLineItemRollPicker from '../screens/EditLineItemRollPicker';
 import ListingWebView from '../screens/ListingWebView';
 
 export default createStackNavigator(
@@ -27,6 +28,7 @@ export default createStackNavigator(
     ListingWebView: ListingWebView,
     CartItemDetails: CartItemDetails,
     EditLineItem: EditLineItem,
+    EditLineItemRollPicker: EditLineItemRollPicker,
   },
   {
     defaultNavigationOptions: {

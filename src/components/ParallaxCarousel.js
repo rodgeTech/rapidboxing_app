@@ -1,18 +1,12 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {View, StyleSheet, Dimensions} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import Carousel, {ParallaxImage} from 'react-native-snap-carousel';
 import {Icon} from 'react-native-ui-kitten';
 
-import {OrderContext} from '../../contexts/OrderContext';
-
 const {width: screenWidth} = Dimensions.get('window');
 
-const Images = ({images}) => {
-  const [orderState, dispatch] = useContext(OrderContext);
-
-  console.log('IMAGE CARS ', images);
-
+const ParallaxCarousel = ({images, onRemoveImage}) => {
   const renderItem = ({item, index}, parallaxProps) => {
     const imageSrc = 'imageUrl' in item ? item.imageUrl : item.uri;
     return (
@@ -30,13 +24,7 @@ const Images = ({images}) => {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <TouchableOpacity
-            onPress={() =>
-              dispatch({
-                type: 'REMOVE_IMAGE',
-                image: item,
-              })
-            }>
+          <TouchableOpacity onPress={() => onRemoveImage(item)}>
             <Icon name="close-outline" fill="#C5CEE0" width={20} height={20} />
           </TouchableOpacity>
         </View>
@@ -65,7 +53,7 @@ const Images = ({images}) => {
   );
 };
 
-export default Images;
+export default ParallaxCarousel;
 
 const styles = StyleSheet.create({
   item: {
