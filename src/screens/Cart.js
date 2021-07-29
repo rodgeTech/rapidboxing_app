@@ -19,12 +19,13 @@ const Cart = ({navigation}) => {
       api
         .get('/cart')
         .then(({data}) => {
-          const {cart, lineItem} = normalize(data);
+          const {cart, lineItem, image} = normalize(data);
 
           dispatch({
             type: 'GET_CART_SUCCESS',
             cart,
             lineItems: lineItem,
+            images: image,
           });
         })
         .catch(err => {
@@ -61,6 +62,7 @@ const Cart = ({navigation}) => {
 
   const cart = build(state, 'cart', null);
   const lineItems = build(state, 'lineItems', null);
+  const images = build(state, 'images', null);
 
   if (!lineItems || lineItems.length == 0) {
     return <CartEmpty navigate={navigation.navigate} />;
@@ -71,6 +73,7 @@ const Cart = ({navigation}) => {
       <ScrollView showsVerticalScrollIndicator={false}>
         <CartItems
           items={lineItems}
+          images={images}
           removeLineItem={removeLineItem}
           navigate={navigation.navigate}
         />
