@@ -39,6 +39,8 @@ const reducer = (state, action) => {
       return {
         ...state,
       };
+    case 'RESET_CART':
+      return initialState;
     default:
       return state;
   }

@@ -33,13 +33,6 @@ export default (Form = ({checkout, profile, addressLoading, address}) => {
         <React.Fragment>
           <RenderConfirm callback={() => checkout(values)} />
 
-          <View
-            style={{marginBottom: 20, padding: 10, backgroundColor: '#EBF7FF'}}>
-            <Text style={{fontSize: 14}}>
-              Please note your order total is viable to change. We will notify
-              you of any such changes.
-            </Text>
-          </View>
           <Input
             label="Email"
             labelStyle={styles.label}
