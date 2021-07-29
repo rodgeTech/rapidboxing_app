@@ -11,23 +11,30 @@ const ParallaxCarousel = ({images, onRemoveImage}) => {
     const imageSrc = 'imageUrl' in item ? item.imageUrl : item.uri;
     return (
       <View style={styles.item}>
-        <View
-          style={{
-            position: 'absolute',
-            top: 4,
-            right: 4,
-            height: 30,
-            width: 30,
-            backgroundColor: '#F2F8FF',
-            borderRadius: 50,
-            zIndex: 999,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          <TouchableOpacity onPress={() => onRemoveImage(item)}>
-            <Icon name="close-outline" fill="#C5CEE0" width={20} height={20} />
-          </TouchableOpacity>
-        </View>
+        {onRemoveImage && (
+          <View
+            style={{
+              position: 'absolute',
+              top: 4,
+              right: 4,
+              height: 30,
+              width: 30,
+              backgroundColor: '#F2F8FF',
+              borderRadius: 50,
+              zIndex: 999,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <TouchableOpacity onPress={() => onRemoveImage(item)}>
+              <Icon
+                name="close-outline"
+                fill="#C5CEE0"
+                width={20}
+                height={20}
+              />
+            </TouchableOpacity>
+          </View>
+        )}
 
         <ParallaxImage
           source={{uri: imageSrc}}

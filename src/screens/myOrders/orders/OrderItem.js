@@ -18,9 +18,7 @@ export default (OrderItem = ({item, navigation}) => (
       <View style={{flexDirection: 'row'}}>
         <View style={{flex: 1}}>
           <View style={{flexDirection: 'row'}}>
-            <Text>
-              #{item.trackingNumber}
-            </Text>
+            <Text style={{fontWeight: 'bold'}}>#{item.trackingNumber}</Text>
           </View>
         </View>
         <Text appearance="hint">{item.createdAt}</Text>
@@ -34,7 +32,7 @@ export default (OrderItem = ({item, navigation}) => (
           borderColor: '#EEF8FF',
         }}>
         <View style={{flex: 1}}>
-          <Text>Total</Text>
+          <Text style={{fontWeight: 'bold', color: '#2980b9'}}>Total</Text>
         </View>
         <View>
           <Text>{moneyFormat(item.total, 'bzd')}</Text>
@@ -49,7 +47,7 @@ export default (OrderItem = ({item, navigation}) => (
           borderColor: '#EEF8FF',
         }}>
         <View style={{flex: 1}}>
-          <Text>Status</Text>
+          <Text style={{fontWeight: 'bold', color: '#2980b9'}}>Status</Text>
         </View>
         <View>
           <Text>{item.status}</Text>
