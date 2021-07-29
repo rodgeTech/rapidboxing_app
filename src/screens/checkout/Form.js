@@ -83,7 +83,7 @@ export default (Form = ({checkout, profile, addressLoading, address}) => {
           />
           <Input
             value={values.address || address}
-            label="Address"
+            label="Delivery Address"
             labelStyle={styles.label}
             icon={() => <Icon name="map-outline" fill="#C5CEE0" />}
             onChangeText={handleChange('address')}
