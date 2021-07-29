@@ -81,7 +81,7 @@ const Cart = ({navigation}) => {
             size="large"
             style={{width: '100%', marginTop: 30, marginBottom: 20}}
             onPress={() => navigation.navigate('Checkout')}>
-            Checkout
+            Continue
           </Button>
         </View>
       </ScrollView>

@@ -18,7 +18,6 @@ function Confirm({callback, isOpen, closeConfirm}) {
           </Text>
           <View style={{flexDirection: 'row', marginTop: 20}}>
             <Button
-              status="success"
               size="large"
               onPress={callback}
               style={{width: 100, marginRight: 20}}>

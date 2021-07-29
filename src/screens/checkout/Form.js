@@ -92,13 +92,16 @@ export default (Form = ({checkout, profile, addressLoading, address}) => {
             status={touched.address && errors.address && 'danger'}
             sty
           />
-          {addressLoading && <Text appearance='hint' style={{marginTop: 0, marginBottom: 10}}>Determining your address...</Text>}
+          {addressLoading && (
+            <Text appearance="hint" style={{marginTop: 0, marginBottom: 10}}>
+              Determining your address...
+            </Text>
+          )}
           <Button
-            status="success"
             size="large"
             style={{width: '100%', marginTop: 20, marginBottom: 20}}
             onPress={handleSubmit}>
-            Checkout Order
+            Submit Order
           </Button>
         </React.Fragment>
       )}

@@ -150,7 +150,6 @@ export default function Form({rates, onSubmit, lineItem}) {
           </View>
 
           <Button
-            status="success"
             size="large"
             style={{width: '100%', marginTop: 30, marginBottom: 20}}
             onPress={handleSubmit}>

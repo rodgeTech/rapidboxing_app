@@ -109,7 +109,6 @@ export default (Form = ({onUpdate, profile}) => {
             secureTextEntry
           />
           <Button
-            status="success"
             size="large"
             style={{width: '100%', marginTop: 10, marginBottom: 20}}
             onPress={handleSubmit}

@@ -109,7 +109,6 @@ export default (Form = ({listing, rates, createLineItem}) => (
         />
 
         <Button
-          status="success"
           size="large"
           style={{width: '100%', marginTop: 30, marginBottom: 20}}
           onPress={handleSubmit}>
