@@ -6,7 +6,7 @@ import {CartContext} from '../contexts/CartContext';
 export default function CartCountIcon() {
   const [state, dispatch] = useContext(CartContext);
 
-  const count = Object.keys(state.lineItems).length;
+  const count = state.lineItems ? Object.keys(state.lineItems).length : 0;
 
   return (
     <View
