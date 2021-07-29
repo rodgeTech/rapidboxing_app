@@ -23,7 +23,7 @@ export default (Orders = ({items, navigation}) => {
       numColumns={1}
       showsVerticalScrollIndicator={false}
       ItemSeparatorComponent={renderSeparator}
-      ListEmptyComponent={Empty}
+      ListEmptyComponent={<Empty text="No orders yet" />}
     />
   );
 });
