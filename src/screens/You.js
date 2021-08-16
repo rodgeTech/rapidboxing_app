@@ -1,5 +1,5 @@
-import React, {useEffect, useReducer, useLayoutEffect} from 'react';
-import {StyleSheet, ScrollView, View, ActivityIndicator} from 'react-native';
+import React, {useReducer, useLayoutEffect} from 'react';
+import {StyleSheet, ScrollView, View} from 'react-native';
 import {Layout, Text, Icon} from 'react-native-ui-kitten';
 import AsyncStorage from '@react-native-community/async-storage';
 import normalize from 'json-api-normalizer';
@@ -82,19 +82,18 @@ export default (You = ({navigation}) => {
     <Layout style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View
-          style={{alignItems: 'center', marginVertical: 20, paddingTop: 20}}>
-          <Icon name="person-outline" fill="#000" width={55} height={55} />
-          {!fetchingProfile ? (
+          style={{
+            alignItems: 'center',
+            paddingVertical: 40,
+            backgroundColor: '#0079BF',
+          }}>
+          {!fetchingProfile && (
             <React.Fragment>
-              <Text category="h6" style={{marginTop: 5}}>
-                Hi, {profile.name}
+              <Text category="h5" style={{color: '#fff'}}>
+                Hello, {profile.name}
               </Text>
-              <Text category="h6" appearance="hint">
-                {profile.email}
-              </Text>
+              <Text style={{color: '#fff', fontSize: 16}}>{profile.email}</Text>
             </React.Fragment>
-          ) : (
-            <ActivityIndicator size="small" style={{marginTop: 20}} />
           )}
         </View>
         <Menu signOut={signOut} navigation={navigation} />

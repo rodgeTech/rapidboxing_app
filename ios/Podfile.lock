@@ -192,6 +192,16 @@ PODS:
     - React-cxxreact (= 0.61.3)
     - React-jsi (= 0.61.3)
   - React-jsinspector (0.61.3)
+  - react-native-camera (3.44.1):
+    - React-Core
+    - react-native-camera/RCT (= 3.44.1)
+    - react-native-camera/RN (= 3.44.1)
+  - react-native-camera/RCT (3.44.1):
+    - React-Core
+  - react-native-camera/RN (3.44.1):
+    - React-Core
+  - react-native-cameraroll (4.0.4):
+    - React-Core
   - react-native-geolocation-service (5.0.0):
     - React
   - react-native-onesignal (3.7.3):
@@ -272,6 +282,8 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
+  - react-native-camera (from `../node_modules/react-native-camera`)
+  - "react-native-cameraroll (from `../node_modules/@react-native-community/cameraroll`)"
   - react-native-geolocation-service (from `../node_modules/react-native-geolocation-service`)
   - react-native-onesignal (from `../node_modules/react-native-onesignal`)
   - react-native-webview (from `../node_modules/react-native-webview`)
@@ -330,6 +342,10 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsiexecutor"
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
+  react-native-camera:
+    :path: "../node_modules/react-native-camera"
+  react-native-cameraroll:
+    :path: "../node_modules/@react-native-community/cameraroll"
   react-native-geolocation-service:
     :path: "../node_modules/react-native-geolocation-service"
   react-native-onesignal:
@@ -387,6 +403,8 @@ SPEC CHECKSUMS:
   React-jsi: 8bcf5836caa8a759c135ab9ef97f3e023a7b94af
   React-jsiexecutor: ae078e9df9c65bcdcf68f9a17656657932d95528
   React-jsinspector: a8939cc6909607eb5e8a5ecfff7c6226984e174d
+  react-native-camera: 7bf59f2728ffb019fa25e60a225d2c57e1a8f0f6
+  react-native-cameraroll: 88f4e62d9ecd0e1f253abe4f685474f2ea14bfa2
   react-native-geolocation-service: 141e33bdb179bcba10b216ee13962611e21f2be4
   react-native-onesignal: 417b2ae5c3148a47a6ef70b6af443186048b2022
   react-native-webview: 57cdcf9981594a1a7de36ecfe7f079379543ef1f
@@ -409,6 +427,6 @@ SPEC CHECKSUMS:
   SDWebImageWebPCoder: d0dac55073088d24b2ac1b191a71a8f8d0adac21
   Yoga: 02036f6383c0008edb7ef0773a0e6beb6ce82bd1
 
-PODFILE CHECKSUM: eb37df8267dd7a43f431c689a61309d62782ea09
+PODFILE CHECKSUM: e9c5b4bdcdc84edc44f3a2bd5f1c5d4c1ddd89b4
 
 COCOAPODS: 1.10.1

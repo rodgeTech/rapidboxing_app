@@ -33,13 +33,6 @@ export default (Form = ({checkout, profile, addressLoading, address}) => {
         <React.Fragment>
           <RenderConfirm callback={() => checkout(values)} />
 
-          <View
-            style={{marginBottom: 20, padding: 10, backgroundColor: '#EBF7FF'}}>
-            <Text style={{fontSize: 14}}>
-              Please note your order total is viable to change. We will notify
-              you of any such changes.
-            </Text>
-          </View>
           <Input
             label="Email"
             labelStyle={styles.label}
@@ -83,7 +76,7 @@ export default (Form = ({checkout, profile, addressLoading, address}) => {
           />
           <Input
             value={values.address || address}
-            label="Address"
+            label="Delivery Address"
             labelStyle={styles.label}
             icon={() => <Icon name="map-outline" fill="#C5CEE0" />}
             onChangeText={handleChange('address')}
@@ -92,13 +85,16 @@ export default (Form = ({checkout, profile, addressLoading, address}) => {
             status={touched.address && errors.address && 'danger'}
             sty
           />
-          {addressLoading && <Text appearance='hint' style={{marginTop: 0, marginBottom: 10}}>Determining your address...</Text>}
+          {addressLoading && (
+            <Text appearance="hint" style={{marginTop: 0, marginBottom: 10}}>
+              Determining your address...
+            </Text>
+          )}
           <Button
-            status="success"
             size="large"
             style={{width: '100%', marginTop: 20, marginBottom: 20}}
             onPress={handleSubmit}>
-            Checkout Order
+            Submit Order
           </Button>
         </React.Fragment>
       )}

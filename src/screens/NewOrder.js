@@ -1,18 +1,23 @@
 import React, {useEffect, useContext} from 'react';
-import {StyleSheet, ActivityIndicator} from 'react-native';
+import {StyleSheet, ActivityIndicator, View} from 'react-native';
 import {StackActions} from 'react-navigation';
 import normalize from 'json-api-normalizer';
 import build from 'redux-object';
-import {Layout} from 'react-native-ui-kitten';
+import {Layout, Icon} from 'react-native-ui-kitten';
 import InputScrollView from 'react-native-input-scroll-view';
+import {getType} from 'mime';
 
 import {ShippingRateContext} from '../contexts/ShippingRateContext';
 import {useSpinner} from '../hooks/useSpinner';
 
 import api from '../utils/api';
 import Form from './newOrder/Form';
+import {OrderContext} from '../contexts/OrderContext';
+import ParallaxCarousel from '../components/ParallaxCarousel';
 
 const NewOrder = ({navigation}) => {
+  const [orderState, orderDispatch] = useContext(OrderContext);
+
   const [shippingRateState, shippingRateDispatch] = useContext(
     ShippingRateContext,
   );
@@ -46,18 +51,28 @@ const NewOrder = ({navigation}) => {
       extraPounds,
       localPickup,
     } = values;
-    const params = {
-      link,
-      details,
-      quantity,
-      price,
-      shipping_rate_id: shippingRate.id,
-      extra_pounds: extraPounds,
-      local_pickup: localPickup,
-    };
+
+    const formData = new FormData();
+    formData.append('link', link);
+    formData.append('details', details);
+    formData.append('quantity', quantity);
+    formData.append('price', price);
+    formData.append('shipping_rate_id', shippingRate.id);
+    formData.append('extra_pounds', extraPounds);
+    formData.append('local_pickup', localPickup);
+
+    for (const orderImage of orderState.images) {
+      const image = {
+        uri: `${orderImage.uri}`,
+        name: orderImage.filename,
+        type: getType(orderImage.filename),
+      };
+
+      formData.append('images[]', image);
+    }
 
     api
-      .post('/line_items', params)
+      .post('/line_items', formData)
       .then(res => {
         resetForm();
         hideSpinner();
@@ -90,18 +105,33 @@ const NewOrder = ({navigation}) => {
   return (
     <React.Fragment>
       <RenderSpinner />
-      <Layout style={styles.container}>
-        <InputScrollView showsVerticalScrollIndicator={false}>
+      <InputScrollView showsVerticalScrollIndicator={true}>
+        {orderState.images && (
+          <View
+            style={{
+              backgroundColor: '#F2F6FF',
+              paddingTop: 15,
+              paddingBottom: 15,
+            }}>
+            <ParallaxCarousel
+              images={orderState.images}
+              onRemoveImage={image => {
+                orderDispatch({
+                  type: 'REMOVE_IMAGE',
+                  image,
+                });
+              }}
+            />
+          </View>
+        )}
+
+        <Layout style={styles.container}>
           <Form rates={selectRatesData} createLineItem={createLineItem} />
-        </InputScrollView>
-      </Layout>
+        </Layout>
+      </InputScrollView>
     </React.Fragment>
   );
 };
-
-NewOrder.navigationOptions = screenProps => ({
-  title: 'Add To Cart',
-});
 
 export default NewOrder;
 
@@ -113,5 +143,14 @@ const styles = StyleSheet.create({
   },
   select: {
     width: '100%',
+  },
+  imagePreivew: {
+    resizeMode: 'cover',
+
+    height: 300,
+    backgroundColor: '#f7f7f7',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

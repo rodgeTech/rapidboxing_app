@@ -1,44 +1,64 @@
 import React from 'react';
+import {Image} from 'react-native';
 import {StyleSheet, View, TouchableOpacity} from 'react-native';
 import {Text, Button} from 'react-native-ui-kitten';
 
 import {moneyFormat} from '../../../utils/money';
 
-export default (CartItem = ({item, removeLineItem, navigate}) => (
-  <View style={styles.item}>
-    {/* <Image
-      style={{ width: '100%', height: 160, borderTopRightRadius: 8, borderTopLeftRadius: 8 }}
-      source={{ uri: item.coverImage }}
-    /> */}
-    <View style={{padding: 20}}>
-      <TouchableOpacity
-        onPress={() =>
-          navigate('ListingWebView', {url: item.link, title: item.link})
-        }
-        activeOpacity={0.8}>
-        <Text appearance="hint" numberOfLines={2}>
-          {item.link}
-        </Text>
-      </TouchableOpacity>
-      <View style={{flexDirection: 'row', marginTop: 10}}>
-        <View style={{flex: 1, flexDirection: 'row'}}>
-          <Text category="s1" style={{paddingRight: 10}}>
-            {moneyFormat(item.price, 'usd')}
-          </Text>
-          <Text category="s1" appearance="hint">
-            Qty {item.quantity}
-          </Text>
+export default function CartItem({item, images, removeLineItem, navigate}) {
+  const imageId = item.images.length ? item.images[0].id : null;
+  const image = imageId
+    ? images.find(image => image.id.toString() === imageId)
+    : null;
+
+  return (
+    <TouchableOpacity
+      onPress={() => navigate('EditLineItem', {lineItemId: item.id})}
+      activeOpacity={0.8}>
+      <View style={styles.item}>
+        {image && (
+          <Image
+            style={{
+              width: '100%',
+              height: 160,
+              borderTopRightRadius: 8,
+              borderTopLeftRadius: 8,
+            }}
+            source={{uri: image.imageUrl}}
+          />
+        )}
+
+        <View style={{padding: 20}}>
+          <TouchableOpacity
+            onPress={() =>
+              navigate('ListingWebView', {url: item.link, title: item.link})
+            }
+            activeOpacity={0.8}>
+            <Text appearance="hint" numberOfLines={2}>
+              {item.link}
+            </Text>
+          </TouchableOpacity>
+          <View style={{flexDirection: 'row', marginTop: 10}}>
+            <View style={{flex: 1, flexDirection: 'row'}}>
+              <Text category="s1" style={{paddingRight: 10}}>
+                {moneyFormat(item.price, 'usd')}
+              </Text>
+              <Text category="s1" appearance="hint">
+                Qty {item.quantity}
+              </Text>
+            </View>
+            <Button
+              onPress={() => removeLineItem(item.id)}
+              status="basic"
+              size="tiny">
+              Remove
+            </Button>
+          </View>
         </View>
-        <Button
-          onPress={() => removeLineItem(item.id)}
-          status="basic"
-          size="tiny">
-          Remove
-        </Button>
       </View>
-    </View>
-  </View>
-));
+    </TouchableOpacity>
+  );
+}
 
 const styles = StyleSheet.create({
   item: {

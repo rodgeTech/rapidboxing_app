@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* RapidBoxingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* RapidBoxingTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
@@ -18,16 +19,17 @@
 		2DCD954D1E0B4F2C00145EB5 /* RapidBoxingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* RapidBoxingTests.m */; };
 		2ECDD3BF274D38931BC7E4FD /* libPods-RapidBoxingTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF2AA8D7589D838C3720EBA /* libPods-RapidBoxingTests.a */; };
 		4FB34E6DBF6A980C43801934 /* libPods-RapidBoxing-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2151E34FE04C9D9D999B0BB /* libPods-RapidBoxing-tvOSTests.a */; };
+		5464E01CD925449183F90ED6 /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03B7E2F5B3E845759383DE82 /* SourceSansPro-Regular.ttf */; };
+		580C0D5C14DF44A88CE07C35 /* Viga-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB6AC13393044FA8911E5258 /* Viga-Regular.ttf */; };
+		5F400B6373EB4E8DB40669F0 /* SourceSansPro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F373457CAD846879E917333 /* SourceSansPro-SemiBold.ttf */; };
 		9C0448B0C3A7D79F9F67EA6A /* libPods-OneSignalNotificationServiceExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B367F7DAC91747351346C295 /* libPods-OneSignalNotificationServiceExtension.a */; };
+		A0DBDA9926AB94A500BD4782 /* libreact-native-cameraroll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0DBDA9826AB94A500BD4782 /* libreact-native-cameraroll.a */; };
 		B85DED852C4A27B55181209F /* libPods-RapidBoxing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A837CD99BD200A34D3D021BC /* libPods-RapidBoxing.a */; };
 		BA26025A248753EF00571602 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA260259248753EF00571602 /* NotificationService.swift */; };
 		BA26025E248753EF00571602 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BA260257248753EF00571602 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BAE8CE4D24B1278500F785AD /* SwiftSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE8CE4C24B1278500F785AD /* SwiftSupport.swift */; };
-		F9276DD5B27445B492066D10 /* SourceSansPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA431438DEFB42358B6FCDF0 /* SourceSansPro-Bold.ttf */; };
 		EF3CABA2EC8A471EB8DA2E4A /* SourceSansPro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8C25348DE5441F4A1DADB1E /* SourceSansPro-Light.ttf */; };
-		5464E01CD925449183F90ED6 /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03B7E2F5B3E845759383DE82 /* SourceSansPro-Regular.ttf */; };
-		5F400B6373EB4E8DB40669F0 /* SourceSansPro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F373457CAD846879E917333 /* SourceSansPro-SemiBold.ttf */; };
-		580C0D5C14DF44A88CE07C35 /* Viga-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB6AC13393044FA8911E5258 /* Viga-Regular.ttf */; };
+		F9276DD5B27445B492066D10 /* SourceSansPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA431438DEFB42358B6FCDF0 /* SourceSansPro-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
 			remoteInfo = "RapidBoxing-tvOS";
+		};
+		A0DBDA9426AB860100BD4782 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0DBDA9026AB860100BD4782 /* RNCCameraRoll.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 58B5115D1A9E6B3D00147676;
+			remoteInfo = RNCCameraRoll;
 		};
 		BA26025C248753EF00571602 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -74,6 +83,7 @@
 		00E356EE1AD99517003FC87E /* RapidBoxingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RapidBoxingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* RapidBoxingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RapidBoxingTests.m; sourceTree = "<group>"; };
+		03B7E2F5B3E845759383DE82 /* SourceSansPro-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SourceSansPro-Regular.ttf"; path = "../assets/fonts/SourceSansPro-Regular.ttf"; sourceTree = "<group>"; };
 		0A98CEFB0BF938F9B742477D /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* RapidBoxing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RapidBoxing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = RapidBoxing/AppDelegate.h; sourceTree = "<group>"; };
@@ -84,6 +94,7 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = RapidBoxing/main.m; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* RapidBoxing-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RapidBoxing-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* RapidBoxing-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RapidBoxing-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F373457CAD846879E917333 /* SourceSansPro-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SourceSansPro-SemiBold.ttf"; path = "../assets/fonts/SourceSansPro-SemiBold.ttf"; sourceTree = "<group>"; };
 		366D87CE991E2A51116F9B11 /* libPods-RapidBoxing-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RapidBoxing-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		47C1E3DA5803876642C21DD8 /* Pods-RapidBoxing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RapidBoxing.release.xcconfig"; path = "Target Support Files/Pods-RapidBoxing/Pods-RapidBoxing.release.xcconfig"; sourceTree = "<group>"; };
 		57993226435DE6B74B3DA1A0 /* Pods-RapidBoxing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RapidBoxing.debug.xcconfig"; path = "Target Support Files/Pods-RapidBoxing/Pods-RapidBoxing.debug.xcconfig"; sourceTree = "<group>"; };
@@ -92,25 +103,25 @@
 		7DF2AA8D7589D838C3720EBA /* libPods-RapidBoxingTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RapidBoxingTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		887CFDA91A9F11E6FB96E03C /* Pods-RapidBoxing-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RapidBoxing-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-RapidBoxing-tvOSTests/Pods-RapidBoxing-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		9455E85A04B239EB01DCE5B7 /* Pods-RapidBoxing-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RapidBoxing-tvOS.release.xcconfig"; path = "Target Support Files/Pods-RapidBoxing-tvOS/Pods-RapidBoxing-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		A0DBDA9026AB860100BD4782 /* RNCCameraRoll.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNCCameraRoll.xcodeproj; path = "../node_modules/@react-native-community/cameraroll/ios/RNCCameraRoll.xcodeproj"; sourceTree = "<group>"; };
+		A0DBDA9826AB94A500BD4782 /* libreact-native-cameraroll.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libreact-native-cameraroll.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A837CD99BD200A34D3D021BC /* libPods-RapidBoxing.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RapidBoxing.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB6AC13393044FA8911E5258 /* Viga-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Viga-Regular.ttf"; path = "../assets/fonts/Viga-Regular.ttf"; sourceTree = "<group>"; };
 		B367F7DAC91747351346C295 /* libPods-OneSignalNotificationServiceExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OneSignalNotificationServiceExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA1156AF23EE07260074A911 /* RapidBoxing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = RapidBoxing.entitlements; path = RapidBoxing/RapidBoxing.entitlements; sourceTree = "<group>"; };
 		BA260257248753EF00571602 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA260259248753EF00571602 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		BA26025B248753EF00571602 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA260263248755B900571602 /* OneSignalNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
+		BA431438DEFB42358B6FCDF0 /* SourceSansPro-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SourceSansPro-Bold.ttf"; path = "../assets/fonts/SourceSansPro-Bold.ttf"; sourceTree = "<group>"; };
 		BAE8CE4B24B1278400F785AD /* RapidBoxing-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RapidBoxing-Bridging-Header.h"; sourceTree = "<group>"; };
 		BAE8CE4C24B1278500F785AD /* SwiftSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftSupport.swift; sourceTree = "<group>"; };
 		E2151E34FE04C9D9D999B0BB /* libPods-RapidBoxing-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RapidBoxing-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E52BE51E428681D608127B9B /* Pods-RapidBoxing-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RapidBoxing-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-RapidBoxing-tvOSTests/Pods-RapidBoxing-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E8C25348DE5441F4A1DADB1E /* SourceSansPro-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SourceSansPro-Light.ttf"; path = "../assets/fonts/SourceSansPro-Light.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F1C253071C1DCFAEB67F60AB /* Pods-RapidBoxing-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RapidBoxing-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-RapidBoxing-tvOS/Pods-RapidBoxing-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		BA431438DEFB42358B6FCDF0 /* SourceSansPro-Bold.ttf */ = {isa = PBXFileReference; name = "SourceSansPro-Bold.ttf"; path = "../assets/fonts/SourceSansPro-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		E8C25348DE5441F4A1DADB1E /* SourceSansPro-Light.ttf */ = {isa = PBXFileReference; name = "SourceSansPro-Light.ttf"; path = "../assets/fonts/SourceSansPro-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		03B7E2F5B3E845759383DE82 /* SourceSansPro-Regular.ttf */ = {isa = PBXFileReference; name = "SourceSansPro-Regular.ttf"; path = "../assets/fonts/SourceSansPro-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		2F373457CAD846879E917333 /* SourceSansPro-SemiBold.ttf */ = {isa = PBXFileReference; name = "SourceSansPro-SemiBold.ttf"; path = "../assets/fonts/SourceSansPro-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		AB6AC13393044FA8911E5258 /* Viga-Regular.ttf */ = {isa = PBXFileReference; name = "Viga-Regular.ttf"; path = "../assets/fonts/Viga-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0DBDA9926AB94A500BD4782 /* libreact-native-cameraroll.a in Frameworks */,
 				B85DED852C4A27B55181209F /* libPods-RapidBoxing.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -189,9 +201,22 @@
 			name = RapidBoxing;
 			sourceTree = "<group>";
 		};
+		1BAC140986E343368EFA9854 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BA431438DEFB42358B6FCDF0 /* SourceSansPro-Bold.ttf */,
+				E8C25348DE5441F4A1DADB1E /* SourceSansPro-Light.ttf */,
+				03B7E2F5B3E845759383DE82 /* SourceSansPro-Regular.ttf */,
+				2F373457CAD846879E917333 /* SourceSansPro-SemiBold.ttf */,
+				AB6AC13393044FA8911E5258 /* Viga-Regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A0DBDA9826AB94A500BD4782 /* libreact-native-cameraroll.a */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				A837CD99BD200A34D3D021BC /* libPods-RapidBoxing.a */,
@@ -206,6 +231,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				A0DBDA9026AB860100BD4782 /* RNCCameraRoll.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -241,6 +267,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		A0DBDA9126AB860100BD4782 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A0DBDA9526AB860100BD4782 /* libRNCCameraRoll.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		A1E8B36733D1A944240E247B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -267,19 +301,6 @@
 			);
 			path = OneSignalNotificationServiceExtension;
 			sourceTree = "<group>";
-		};
-		1BAC140986E343368EFA9854 /* Resources */ = {
-			isa = "PBXGroup";
-			children = (
-				BA431438DEFB42358B6FCDF0 /* SourceSansPro-Bold.ttf */,
-				E8C25348DE5441F4A1DADB1E /* SourceSansPro-Light.ttf */,
-				03B7E2F5B3E845759383DE82 /* SourceSansPro-Regular.ttf */,
-				2F373457CAD846879E917333 /* SourceSansPro-SemiBold.ttf */,
-				AB6AC13393044FA8911E5258 /* Viga-Regular.ttf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 
@@ -435,6 +456,12 @@
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = A0DBDA9126AB860100BD4782 /* Products */;
+					ProjectRef = A0DBDA9026AB860100BD4782 /* RNCCameraRoll.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* RapidBoxing */,
@@ -445,6 +472,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		A0DBDA9526AB860100BD4782 /* libRNCCameraRoll.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNCCameraRoll.a;
+			remoteRef = A0DBDA9426AB860100BD4782 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		00E356EC1AD99517003FC87E /* Resources */ = {

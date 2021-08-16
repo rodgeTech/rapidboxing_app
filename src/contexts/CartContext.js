@@ -1,48 +1,46 @@
-import React, { createContext, useReducer } from 'react';
+import React, {createContext, useReducer} from 'react';
 
 export const CartContext = createContext({});
 
 const initialState = {
   fetchingCart: true,
   cart: {},
-  lineItems: {}
-}
+  lineItems: {},
+  images: {},
+};
 
 const reducer = (state, action) => {
   switch (action.type) {
     case 'GET_CART_SUCCESS': {
-      const {
-        cart,
-        lineItems
-      } = action;
+      const {cart, lineItems, images} = action;
       return {
         ...state,
         cart,
         lineItems,
+        images,
         fetchingCart: false,
       };
     }
     case 'GET_CART_FAILURE':
       return {
         ...state,
-        fetchingCart: false
+        fetchingCart: false,
       };
     case 'DELETE_CART_ITEM_SUCCESS': {
-      const {
-        lineItemId,
-        cart
-      } = action;
-      const { [lineItemId]: value, ...updatedLineItems } = state.lineItems
+      const {lineItemId, cart} = action;
+      const {[lineItemId]: value, ...updatedLineItems} = state.lineItems;
       return {
         ...state,
         cart,
-        lineItems: updatedLineItems
+        lineItems: updatedLineItems,
       };
     }
     case 'DELETE_CART_ITEM_FAILURE':
       return {
         ...state,
       };
+    case 'RESET_CART':
+      return initialState;
     default:
       return state;
   }
@@ -55,4 +53,4 @@ export const CartProvider = props => {
       {props.children}
     </CartContext.Provider>
   );
-}
+};

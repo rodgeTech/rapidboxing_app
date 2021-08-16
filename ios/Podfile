@@ -65,6 +65,8 @@ post_install do |_installer|
                    '_initializeModules:(NSArray<id<RCTBridgeModule>> *)modules', '_initializeModules:(NSArray<Class> *)modules')
   find_and_replace('../node_modules/react-native/ReactCommon/turbomodule/core/platform/ios/RCTTurboModuleManager.mm',
                    'RCTBridgeModuleNameForClass(module))', 'RCTBridgeModuleNameForClass(Class(module)))')
+  find_and_replace('../node_modules/react-native/Libraries/Image/RCTUIImageViewAnimated.m',
+                   '_currentFrame.CGImage;', '_currentFrame.CGImage ;} else { [super displayLayer:layer];')
 end
 
 def find_and_replace(dir, findstr, replacestr)

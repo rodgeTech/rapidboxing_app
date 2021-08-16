@@ -8,11 +8,8 @@ import ShippingTotal from './estimation/ShippingTotal';
 import FeesTotal from './estimation/FeesTotal';
 import OverallTotal from './estimation/OverallTotal';
 
-
 const Estimation = ({navigation}) => {
   const calculatedValues = navigation.getParam('calculatedValues', null);
-
-  console.log(calculatedValues)
 
   return (
     <React.Fragment>
@@ -25,9 +22,8 @@ const Estimation = ({navigation}) => {
         </InputScrollView>
       </Layout>
     </React.Fragment>
-  )
+  );
 };
-
 
 export default Estimation;
 

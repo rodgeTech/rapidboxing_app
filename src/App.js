@@ -10,6 +10,7 @@ import {ShippingRateProvider} from './contexts/ShippingRateContext';
 
 import Navigation from './navigators';
 import {default as customMapping} from './custom-mapping.json';
+import {OrderProvider} from './contexts/OrderContext';
 
 function myiOSPromptCallback(permission) {
   // do something with permission value
@@ -64,7 +65,9 @@ export default class App extends React.Component {
           <CartProvider>
             <ListingProvider>
               <ShippingRateProvider>
-                <Navigation />
+                <OrderProvider>
+                  <Navigation />
+                </OrderProvider>
               </ShippingRateProvider>
             </ListingProvider>
           </CartProvider>

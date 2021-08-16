@@ -1,5 +1,13 @@
-import React, {useEffect, useReducer} from 'react';
-import {StyleSheet, ActivityIndicator, View, Linking, Platform, PermissionsAndroid, ToastAndroid} from 'react-native';
+import React, {useContext, useEffect, useReducer} from 'react';
+import {
+  StyleSheet,
+  ActivityIndicator,
+  View,
+  Linking,
+  Platform,
+  PermissionsAndroid,
+  ToastAndroid,
+} from 'react-native';
 import {StackActions} from 'react-navigation';
 import {Layout, Text} from 'react-native-ui-kitten';
 import build from 'redux-object';
@@ -11,14 +19,15 @@ import Geocoder from 'react-native-geocoding';
 import api from '../utils/api';
 import Form from './checkout/Form';
 import {useSpinner} from '../hooks/useSpinner';
+import {CartContext} from '../contexts/CartContext';
 
-Geocoder.init("AIzaSyAb-ZVZZcZ990rdwVsBYbypUbrGX3znTzA");
+Geocoder.init('AIzaSyAb-ZVZZcZ990rdwVsBYbypUbrGX3znTzA');
 
 const initialState = {
   profile: {},
   fetchingProfile: true,
   addressLoading: true,
-  address: ""
+  address: '',
 };
 
 const reducer = (state, action) => {
@@ -51,6 +60,8 @@ const reducer = (state, action) => {
 export default (Checkout = ({navigation}) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const [cartState, cartDispatch] = useContext(CartContext);
+
   const {show: showSpinner, hide: hideSpinner, RenderSpinner} = useSpinner();
 
   const hasLocationPermissionIOS = async () => {
@@ -71,11 +82,13 @@ export default (Checkout = ({navigation}) => {
 
     if (status === 'disabled') {
       Alert.alert(
-        `Turn on Location Services to allow "${appConfig.displayName}" to determine your shipping address.`,
+        `Turn on Location Services to allow "${
+          appConfig.displayName
+        }" to determine your shipping address.`,
         '',
         [
-          { text: 'Go to Settings', onPress: openSetting },
-          { text: "Don't Use Location", onPress: () => {} },
+          {text: 'Go to Settings', onPress: openSetting},
+          {text: "Don't Use Location", onPress: () => {}},
         ],
       );
     }
@@ -133,37 +146,37 @@ export default (Checkout = ({navigation}) => {
       }
 
       Geolocation.getCurrentPosition(
-        (position) => {
+        position => {
           Geocoder.from(position.coords.latitude, position.coords.longitude)
-          .then(({results}) => {
-            const res = results[0]
-            const street = res.address_components[0].short_name;
-            const city = res.address_components[1].long_name;
-            const district = res.address_components[2].long_name;
-            const address = `${street}, ${city}, ${district}`
+            .then(({results}) => {
+              const res = results[0];
+              const street = res.address_components[0].short_name;
+              const city = res.address_components[1].long_name;
+              const district = res.address_components[2].long_name;
+              const address = `${street}, ${city}, ${district}`;
 
-            dispatch({
-              type: 'GET_LOCATION_SUCCESS',
-              address: address,
+              dispatch({
+                type: 'GET_LOCATION_SUCCESS',
+                address: address,
+              });
+            })
+            .catch(error => {
+              console.warn(error);
+              dispatch({
+                type: 'GET_LOCATION_FAILURE',
+              });
             });
-          })
-          .catch(error => {
-            console.warn(error)
-            dispatch({
-              type: 'GET_LOCATION_FAILURE',
-            });
-          });
         },
-        (error) => {
+        error => {
           console.log(error.code, error.message);
           dispatch({
             type: 'GET_LOCATION_FAILURE',
           });
         },
-        { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
+        {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
       );
     }
-    getLocation()
+    getLocation();
   }, []);
 
   useEffect(() => {
@@ -199,8 +212,8 @@ export default (Checkout = ({navigation}) => {
       })
       .then(res => {
         hideSpinner();
+        cartDispatch({type: 'RESET_CART'});
         navigation.dispatch(StackActions.popToTop());
-
         navigation.navigate('MyOrders');
       })
       .catch(err => {
@@ -214,26 +227,47 @@ export default (Checkout = ({navigation}) => {
 
   const profile = build(state.profile, 'user', null);
 
-  const {addressLoading, address} = state
+  const {addressLoading, address} = state;
 
   return (
     <Layout style={styles.container} level="1">
       <RenderSpinner />
       <InputScrollView
-        style={{paddingVertical: 10}}
+        style={{paddingBottom: 10}}
         showsVerticalScrollIndicator={false}>
         <View
           style={{
             paddingTop: 10,
             paddingBottom: 10,
+            backgroundColor: '#0079BF',
+            paddingHorizontal: 16,
           }}>
-          <Text category="h5">Submit your order</Text>
-          <Text category="s1" appearance="hint">
+          <Text category="h5" style={{color: '#fff'}}>
+            Submit your order
+          </Text>
+          <Text style={{color: '#fff'}}>
             Enter the details below to proceed
           </Text>
         </View>
-        <View style={{paddingBottom: 25}}>
-          <Form checkout={createCheckout} profile={profile[0]} addressLoading={addressLoading} address={address} />
+        <View
+          style={{
+            marginBottom: 30,
+            paddingVertical: 4,
+            paddingHorizontal: 10,
+            backgroundColor: '#EBF7FF',
+          }}>
+          <Text style={{fontSize: 14}}>
+            Please note your order total is viable to change. We will notify you
+            of any such changes.
+          </Text>
+        </View>
+        <View style={{paddingBottom: 25, paddingHorizontal: 16}}>
+          <Form
+            checkout={createCheckout}
+            profile={profile[0]}
+            addressLoading={addressLoading}
+            address={address}
+          />
         </View>
       </InputScrollView>
     </Layout>
@@ -243,6 +277,5 @@ export default (Checkout = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 16,
   },
 });
